@@ -2,7 +2,7 @@ FROM    debian:bullseye as builder
 
 RUN     set -ex && \
         apt update && \
-        apt install -y libevent-dev zlib1g-dev libssl-dev gcc make automake ca-certificates autoconf musl-dev coreutils gpg wget default-jdk 
+        apt install -y libevent-dev zlib1g-dev libssl-dev gcc make automake ca-certificates autoconf musl-dev coreutils gpg wget
 
 # Install Tor
 ENV     WHIRLPOOL_TOR_URL             https://dist.torproject.org
@@ -45,7 +45,7 @@ RUN     set -ex && \
         rm "tor-$WHIRLPOOL_TOR_VERSION.tar.gz" && \
         rm "tor-$WHIRLPOOL_TOR_VERSION.tar.gz.asc"
 
-FROM debian:bullseye-slim
+FROM openjdk:19-slim-bullseye
 
 ENV     WHIRLPOOL_HOME                /home/whirlpool
 ENV     WHIRLPOOL_DIR                 /usr/local/whirlpool-cli
